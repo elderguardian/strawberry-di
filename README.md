@@ -23,23 +23,19 @@ return [
 
 #### How to use the di container
 
-Create a new instance of the kernel and pass it to the controller
+Create a new instance of the kernel inside the Router and pass it to the controller action when it gets executed.
 
 ##### **`src/foundations/router/Router.php:route:35`**
 
 ```php
-        if (is_array($routerResult)) {
-            $controllerName = $routerResult[0];
-            $actionName = $routerResult[1];
+        [...]
             $diContainer = new Kernel();
 
             echo (new $controllerName)->$actionName($diContainer);
-        } else {
-            echo $routerResult();
-        }
+        [...]
 ```
 
-Then take it as a parameter in your controller
+Now you can accept the Kernel as a parameter inside your controller.
 
 ##### **`src/controllers/YourController.php`**
 
