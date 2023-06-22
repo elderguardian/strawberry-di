@@ -2,10 +2,16 @@
 
 class Kernel implements IKernel
 {
+    private array $mappings;
+
+    public function __construct(array $mappings)
+    {
+        $this->mappings = $mappings;
+    }
+
     function get(string $contract)
     {
-        $mappings = include "mappings.php";
-        $class = $mappings[$contract];
+        $class = $this->mappings[$contract];
         $params = $this->getParameters($class);
         $paramsAsObjects = [];
 

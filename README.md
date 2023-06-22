@@ -9,9 +9,11 @@ This is a simple di container for [strawberry](https://github.com/elderguardian/
 1. Download the repository or clone its content
 2. Move the `strawberry-di/` directory inside `src/` into the strawberry's `src/foundations`
 
+Or add it as a submodule.
+
 #### How to add mappings
 
-##### **`src/foundatins/di/mappings.php`**
+Pass an array like this to the constructor when creating a new instance of the Kernel class.
 
 ```php
 <?php
@@ -29,7 +31,7 @@ Create a new instance of the kernel inside the Router and pass it to the control
 
 ```php
         [...]
-            $diContainer = new Kernel();
+            $diContainer = new Kernel($mappings);
 
             echo (new $controllerName)->$actionName($diContainer);
         [...]
